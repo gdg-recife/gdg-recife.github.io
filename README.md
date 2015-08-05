@@ -1,2 +1,2 @@
 # gdg-recife.github.io
-Site do GDG Recife, gerado usando Jekyll, hospedado no GitHub Pages.
+Site do GDG Recife, simples, focando nos próximos eventos do Meetup.com
