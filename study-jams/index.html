@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html ng-app="gdgRecife">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link href="https://plus.google.com/107427206571717582029" rel="publisher" />
+  <meta property="og:title" content="Grupo de Desenvolvedores Google Recife" />
+  <meta property="og:image" content="og_image.png" />
+  <meta property="og:url" content="http://www.gdgrecife.com" />
+  <title>GDG Recife - Android for Beguinners</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
+  <link href='microgram.css' rel='stylesheet' type='text/css'>
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="bower_components/responsive-embed/responsive-embed.html">
+
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      max-width: 720px;
+      min-height: 100vh;
+      background-color: #7a7a7a;
+      background-image: url(bg.png);
+      background-position: center;
+      margin: 0 auto;
+      font-family: Roboto;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.670588);
+    }
+
+    .top-menu {
+      background: #BCBEC0;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+    }
+
+    .top-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    #logo {
+      background-image: url(bg.png);
+      background-position: center;
+      width: 100%;
+      border-bottom: 5px solid #BCBEC0;
+    }
+
+    .content {
+      background: #fff;
+      min-height: 100%;
+    }
+
+    .content-internal {
+      margin: 0 20px;
+      padding-bottom: 40px;
+    }
+
+    a.link {
+      color: #177BBD;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .inscreva {
+      background: #33B5E5;
+      padding: 10px 10px;
+      font-size: 1.2em;
+      margin: 10px auto;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      display: block;
+      max-width: 200px;
+      text-shadow: 1px 1px 1px #0E4069;
+      box-sizing: border-box;
+      box-shadow: #177BBD 0 5px 0;
+      position: relative;
+    }
+
+    .inscreva small {
+      font-size: 0.8rem;
+    }
+
+    .contato-title,
+    .footer {
+      text-align: center;
+    }
+
+    .google-logo {
+      max-width: 350px;
+    }
+
+    .footer h4 {
+      margin: 40px 0 15px;
+      padding: 0;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    .top-text {
+      text-align: center;
+      margin: 1rem 0 3rem;
+    }
+
+    .top-text h1, .top-text h2{
+      margin: 0;
+    }
+
+    h2 {
+      margin: 0;
+      padding: 0;
+    }
+
+    .row .column.facilitador-photo {
+      max-width: 100px;
+      margin-bottom: 15px;
+    }
+
+        .row .column.facilitador-photo img {
+      width: 100px;
+      border-radius: 100%;
+        }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div class="top-menu"><a href="http://gdgrecife.com">Voltar para home do GDG Recife</a></div>
+    <img src="logo.png" id="logo">
+
+    <div class="content-internal">
+      <div class="top-text">
+        <h1>Curso gratuito de Android</h1>
+        <h2>com certificação Google</h2>
+        <p>sábados, de 9 a 30 de Abril, na <a href="https://www.google.com.br/maps/dir/''/jump+brasil/data=!4m5!4m4!1m0!1m2!1m1!1s0x7ab18940c93b185:0x8643bd576b6e95cc?sa=X&ved=0ahUKEwjD_sPk6NXKAhXLhpAKHb4UAEsQ9RcIezAL" class="link">Jump Brasil</a></p>
+        <a href="#" class="inscreva">
+          <strong>Inscreva-se agora</strong><br />
+          <small>Vagas limitadas</small>
+        </a>
+      </div>
+
+      <h2>O que são os Study Jams?</h2>
+      <p><strong>Google Developers Study Jams</strong> são grupos de estudo que funcionam numa série de eventos gratuitos, organizados pela comunidade, para explorar determinados temas. Pelo segundo ano, o GDG Recife com parceria da Udacity, realizará o Android for Beguinners. Os alunos estudarão com o conteúdo da Udacity em casa, enquanto acontecerão encontros semanais, organizados por facilitadores certificados pelo Google, para esclarecer dúvidas e monitorar a evolução dos alunos.</p>
+      <p><strong>Pré-requisitos:</strong> Este é um curso com requerimentos basicos de programação orientada a objetos, lógica de programação e inglês básico.</p>
+
+      <h2 style="margin-top: 40px;">Facilitadores</h2>
+      <p>Os facilitadores irão ajudar os alunos durante os encontros semanais, acompanhando o andamento, resolvendo dúvidas e avaliando exercícios.</p>
+
+      <div class="row">
+        <div class="column facilitador-photo">
+          <img src="facilitadores/levi.jpg" />
+        </div>
+        <div class="column"><h3>Levi Satusino</h3><p>Instrutor</p></div>
+      </div>
+
+      <div class="row">
+        <div class="column facilitador-photo">
+          <img src="facilitadores/nelson.jpg" /></div>
+        <div class="column"><h3>Nelson Glauber</h3><p>Google Developer Expert</p></div>
+      </div>
+
+      <div class="row">
+        <div class="column facilitador-photo">
+          <img src="facilitadores/quinta.jpg" /></div>
+        <div class="column"><h3>Marcelo Quinta</h3><p>Google Developer Expert</p></div>
+      </div>
+
+      <h2 style="margin-top: 40px;">Apoio</h2>
+      <p><a href="http://www.jumpbrasil.com/"><img src="http://www.jumpbrasil.com/img/logo.png"></a></p>
+
+
+      <h2 style="margin: 40px 0 10px;">Introdução</h2>
+      <p>Assista um fragmento da primeira semana:</p>
+      <responsive-embed>
+        <iframe src="https://www.youtube.com/embed/LQpAmM4vznQ" frameborder="0" allowfullscreen></iframe>
+      </responsive-embed>
+
+      <div class="footer">
+        <h4>O GDG Recife é um programa</h4>
+        <img src="http://gdgrecife.com/google.png" class="google-logo">
+      </div>
+
+    </div>
+</body>
+
+</html>
