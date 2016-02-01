@@ -1,194 +1,219 @@
 <!DOCTYPE html>
 <html ng-app="gdgRecife">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link href="https://plus.google.com/107427206571717582029" rel="publisher" />
-    <meta property="og:title" content="Grupo de Desenvolvedores Google Recife" />
-    <meta property="og:image" content="og_image.png" />
-    <meta property="og:url" content="http://www.gdgrecife.com" />
-    <title>GDG Recife</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.min.js"></script>
-    <script>
-        angular.module('gdgRecife', ['ngSanitize']).controller('EventsCtrl', function ($scope, $http) {
-            $http.get("https://jsonp.afeld.me/?url=https%3A%2F%2Fapi.meetup.com%2F2%2Fevents%3Foffset%3D0%26format%3Djson%26limited_events%3DFalse%26group_urlname%3DGDG-Recife%26photo-host%3Dpublic%26page%3D20%26fields%3D%26order%3Dtime%26desc%3Dfalse%26status%3Dupcoming%26sig_id%3D142282872%26sig%3D62fe82c1fb2b321c78c85b260ff0c121b3d12884")
-                .success(function (response) {
-                    console.log(response);
-                    $scope.events = response.results;
-                });
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link href="https://plus.google.com/107427206571717582029" rel="publisher" />
+  <meta property="og:title" content="Grupo de Desenvolvedores Google Recife" />
+  <meta property="og:image" content="og_image.png" />
+  <meta property="og:url" content="http://www.gdgrecife.com" />
+  <title>GDG Recife</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <style>
+    html {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      max-width: 720px;
+      min-height: 100vh;
+      background: #eeeeee;
+      margin: 0 auto;
+      font-family: Roboto;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.670588);
+    }
+
+    #logo {
+      background: #384EA1;
+      width: 100%;
+      border-bottom: 8px solid #6877BA;
+    }
+
+    .content {
+      background: #fff;
+      min-height: 100%;
+    }
+
+    .content-internal {
+      margin: 0 20px;
+      padding-bottom: 40px;
+    }
+
+    .social-btn {
+      margin: 2rem auto;
+      padding: 0;
+      width: 60%;
+    }
+
+    .social-btn li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a.link {
+      color: #384EA1;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .social-btn li a {
+      background: #384EA1;
+      padding: 10px 10px 5px;
+      width: 100%;
+      margin-bottom: 10px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      display: block;
+      box-sizing: border-box;
+      box-shadow: #6877BA 0 5px 0;
+      position: relative;
+    }
+
+    .social-btn li a.membros {
+      background: #239587;
+      box-shadow: #269F92 0 5px 0;
+    }
+
+    .social-btn li a.meetup {
+      background: #239587;
+      box-shadow: #269F92 0 5px 0;
+    }
+
+    .social-btn li a .fa {
+      position: absolute;
+      top: 9px;
+      left: 10px;
+      font-size: 1.25em;
+    }
+
+    .events,
+    .events p,
+    .events h3 {
+      margin: 0 0 4px 0;
+      padding: 0;
+    }
+
+    .events li {
+      list-style: none;
+      margin-bottom: 10px;
+    }
+
+    .events li:nth-child(1) h3 {
+      font-size: 1.5em;
+    }
+
+    .events li:nth-child(n+2) h3 {
+      font-size: 1em;
+    }
+
+    .rsvp {
+      margin: 3px 0;
+      background: #384EA1;
+      padding: 6px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      display: inline-block;
+      font-weight: 700;
+    }
+
+    .contato-title,
+    .footer {
+      text-align: center;
+    }
+
+    .google-logo {
+      max-width: 350px;
+    }
+
+    .footer h4 {
+      margin: 40px 0 15px;
+      padding: 0;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+  <script>
+    angular.module('gdgRecife', []).controller('EventsCtrl', function($scope, $http) {
+      $http.get("http://800080.co/gdgrecife/meetups")
+        .success(function(response) {
+          $scope.events = response.results;
+
+            (function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.async = true;
+                js.src = "https://a248.e.akamai.net/secure.meetupstatic.com/s/script/2012676015776998360572/api/mu.btns.js?id=1vtco2r1enrrpmkqo7aojrqpk8";
+                fjs.parentNode.insertBefore(js, fjs);
+              }
+            })(document, "script", "mu-bootjs");
         });
-    </script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <style>
-        html {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            max-width: 960px;
-            background: #eeeeee;
-            margin: 0 auto;
-            font-family: Roboto;
-            font-weight: 300;
-            color: rgba(0, 0, 0, 0.670588);
-        }
-
-        #logo {
-            width: 100%;
-            border-bottom: 10px solid #8799A4;
-        }
-
-        .content {
-            background: #fff;
-            min-height: 100%;
-        }
-
-        .content-internal {
-            margin: 0 20px;
-            padding-bottom: 40px;
-        }
-
-        .social-btn {
-            margin: 0 auto;
-            padding: 0;
-            width: 60%;
-        }
-
-        .social-btn li {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .social-btn li a {
-            background: #00BED3;
-            padding: 10px 10px 5px;
-            width: 100%;
-            margin-bottom: 10px;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
-            display: block;
-            box-sizing: border-box;
-            box-shadow: #4EC9DC 0 5px 0;
-            position: relative;
-        }
-
-        .social-btn li a.membros {
-            background: #239587;
-            box-shadow: #269F92 0 5px 0;
-        }
-
-        .social-btn li a .fa {
-            position: absolute;
-            top: 9px;
-            left: 10px;
-            font-size: 1.25em;
-        }
-
-        .events,
-        .events p,
-        .events h3 {
-            margin: 0 0 4px 0;
-            padding: 0;
-        }
-
-        .events li {
-            list-style: none;
-            margin-bottom: 10px;
-        }
-
-        .events li:nth-child(1) h3 {
-            font-size: 1.5em;
-        }
-
-        .events li:nth-child(n+2) h3 {
-            font-size: 1em;
-        }
-
-        .rsvp {
-            margin: 3px 0;
-            background: #8799A4;
-            padding: 6px;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-            display: inline-block;
-            font-weight: 700;
-        }
-
-        .contato-title,
-        .footer {
-            text-align: center;
-        }
-
-        .google-logo {
-            max-width: 350px;
-        }
-
-        .footer h4 {
-            margin: 40px 0 15px;
-            padding: 0;
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-    </style>
+    });
+  </script>
 </head>
 
 <body>
-    <div class="content">
-        <img src="logo.png" id="logo">
+  <div class="content">
+    <img src="http://photos3.meetupstatic.com/photos/theme_head/c/a/5/full_6963237.jpeg" id="logo">
 
-        <div class="content-internal">
-            <p>
-                O <strong>Google Developers Group Recife</strong> é um grupo colaborativo, focado na comunidade de desenvolvedores que utilizam alguma ferramenta Google, permitindo aprendizado técnico qualificado e um ambiente de networking.
-            </p>
+    <div class="content-internal">
+      <p>
+        O
+        <strong>Google Developers Group Recife</strong> é um grupo colaborativo, focado na comunidade de desenvolvedores que utilizam alguma ferramenta Google, permitindo aprendizado técnico qualificado e um ambiente de networking.
+      </p>
 
-            <div class="next-events">
-                <h2>Próximos Eventos</h2>
-                <p>O GDG Recife promove eventos diversificados, tanto em empresas/faculdades como online. Siga-nos no Meetup e no Google+ para receber os convites em primeira mão.</p>
-                <ul class="events" ng-controller="EventsCtrl">
-                    <li ng-repeat="x in events">
-                        <h3>{{x.name}}</h3>
-                        <p>dia {{x.time | date:'dd/MM/yy'}} às {{x.time | date:'HH:mm'}} </p>
-                        <p ng-if="x.venue.name">Local: {{x.venue.name}}</p>
-                        <p ng-if="x.venue.address_1">Endereço: {{x.venue.address_1}}</p>
-                        <span>{{x.yes_rsvp_count}}</span>
-                        <div ng-if="x.description" ng-bind-html="x.description"></div>
-                        <a href="http://www.meetup.com/GDG-Recife/events/{{x.id}}/" class="rsvp">Inscrições - RSVP</a>
-                    </li>
-                </ul>
-            </div>
 
-            <h2 class="contato-title">Mantenha-se em contato!</h2>
-            <ul class="social-btn">
-                <li><a href="http://gdgrecife.com/membros/" class="membros"><i class="fa fa-star"></i>Cadastre-se no <strong>GDG Recife Membership</strong></a>
-                </li>
-                <li><a href="http://meetup.com/GDG-Recife/"><i class="fa fa-calendar"></i>Inscreva-se no nosso <strong>Meetup.com</strong></a>
-                </li>
-                <li><a href="http://google.com/+GDGRecife"><i class="fa fa-google-plus"></i>Circule-nos no <strong>Google+</strong></a>
-                </li>
-                <li><a href="http://twitter.com/GDGRecife"><i class="fa fa-twitter"></i>Siga-nos no <strong>Twitter</strong></a>
-                </li>
-                <li><a href="http://facebook.com/GDGRecife"><i class="fa fa-facebook"></i>Curta no <strong>Facebook</strong></a>
-                </li>
-                <li><a href="https://www.facebook.com/groups/mobiledevgrouprecife/"><i class="fa fa-facebook-square"></i>Faça parte do Grupo <strong>GDG Recife Sandbox</strong></a>
-                </li>
-                <li><a href="https://play.google.com/store/apps/details?id=org.gdg.frisbee.android"><i class="fa fa-android"></i>Baixe nosso <strong>App para Android!</strong></a>
-                </li>
-            </ul>
 
-            <div class="footer">
-                <h4>O GDG Recife é um programa</h4>
-                <img src="google.png" class="google-logo">
-            </div>
+      <div class="next-events" ng-controller="EventsCtrl">
+        <span ng-show="events.length > 0">
+          <h2>Próximos Eventos</h2>
+          <p>O GDG Recife promove eventos diversificados, tanto em empresas/faculdades como online. Siga-nos no <a href="http://www.meetup.com/GDG-Recife/" class="link">Meetup.com</a> para receber os convites em primeira mão.</p>
+          <ul class="events">
+            <li ng-repeat="x in events">
+              <h3>{{x.name}}</h3>
+              <p>dia {{x.time | date:'dd/MM/yy'}} às {{x.time | date:'HH:mm'}} </p>
+              <p ng-if="x.venue.name">Local: {{x.venue.name}}</p>
+              <p ng-if="x.venue.address_1">Endereço: {{x.venue.address_1}}</p>
+              <a href="http://www.meetup.com/GDG-Recife/events/{{x.id}}/" data-event="{{x.id}}" class="mu-rsvp-btn rsvp">Inscrições - RSVP</a>
+            </li>
+          </ul>
+        </span>
+      </div>
 
-        </div>
+
+      <ul class="social-btn">
+        <li><a href="http://gdgrecife.com/membros/" class="membros"><i class="fa fa-star"></i>Entrar no <strong>GDG Recife Membership</strong></a>
+        </li>
+        <li><a href="http://meetup.com/GDG-Recife/" class="meetup"><i class="fa fa-calendar"></i>Entre no nosso <strong>Meetup.com</strong></a>
+        </li>
+        <li><a href="http://google.com/+GDGRecife"><i class="fa fa-google-plus"></i>Circule-nos no <strong>Google+</strong></a>
+        </li>
+        <li><a href="http://twitter.com/GDGRecife"><i class="fa fa-twitter"></i>Siga-nos no <strong>Twitter</strong></a>
+        </li>
+        <li><a href="http://facebook.com/GDGRecife"><i class="fa fa-facebook"></i>Curta no <strong>Facebook</strong></a>
+        </li>
+        <li><a href="https://www.facebook.com/groups/mobiledevgrouprecife/"><i class="fa fa-facebook-square"></i>Faça parte do Grupo <strong>GDG Recife Sandbox</strong></a>
+        </li>
+        <li><a href="https://play.google.com/store/apps/details?id=org.gdg.frisbee.android"><i class="fa fa-android"></i>Baixe nosso <strong>App para Android!</strong></a>
+        </li>
+      </ul>
+      <div class="footer">
+        <h4>O GDG Recife é um programa</h4>
+        <img src="google.png" class="google-logo">
+      </div>
+
+    </div>
 </body>
 
 </html>
