@@ -10,8 +10,9 @@
     <meta property="og:url" content="http://www.gdgrecife.com" />
     <title>GDG Recife</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-sanitize.min.js"></script>
     <script>
-        angular.module('gdgRecife', []).controller('EventsCtrl', function ($scope, $http) {
+        angular.module('gdgRecife', ['ngSanitize']).controller('EventsCtrl', function ($scope, $http) {
             $http.get("https://jsonp.afeld.me/?url=https%3A%2F%2Fapi.meetup.com%2F2%2Fevents%3Foffset%3D0%26format%3Djson%26limited_events%3DFalse%26group_urlname%3DGDG-Recife%26photo-host%3Dpublic%26page%3D20%26fields%3D%26order%3Dtime%26desc%3Dfalse%26status%3Dupcoming%26sig_id%3D142282872%26sig%3D62fe82c1fb2b321c78c85b260ff0c121b3d12884")
                 .success(function (response) {
                     console.log(response);
@@ -28,8 +29,8 @@
         }
 
         body {
-            max-width: 720px;
-            background: #F4F4F4;
+            max-width: 960px;
+            background: #eeeeee;
             margin: 0 auto;
             font-family: Roboto;
             font-weight: 300;
@@ -38,7 +39,7 @@
 
         #logo {
             width: 100%;
-            border-bottom: 10px solid #3FCADA;
+            border-bottom: 10px solid #8799A4;
         }
 
         .content {
@@ -112,7 +113,7 @@
 
         .rsvp {
             margin: 3px 0;
-            background: #3FCADA;
+            background: #8799A4;
             padding: 6px;
             color: #fff;
             text-decoration: none;
@@ -157,6 +158,8 @@
                         <p>dia {{x.time | date:'dd/MM/yy'}} às {{x.time | date:'HH:mm'}} </p>
                         <p ng-if="x.venue.name">Local: {{x.venue.name}}</p>
                         <p ng-if="x.venue.address_1">Endereço: {{x.venue.address_1}}</p>
+                        <span>{{x.yes_rsvp_count}}</span>
+                        <div ng-if="x.description" ng-bind-html="x.description"></div>
                         <a href="http://www.meetup.com/GDG-Recife/events/{{x.id}}/" class="rsvp">Inscrições - RSVP</a>
                     </li>
                 </ul>
